@@ -1,0 +1,260 @@
+/*--------------------------------------------------------------
+    Search Page
+--------------------------------------------------------------*/
+.kenzap .kenzap-blog-carousel-1 button,
+.kenzap .kenzap-blog-carousel-1 input[type="button"], 
+.kenzap .kenzap-blog-carousel-1 input[type="reset"], 
+.kenzap .kenzap-blog-carousel-1 input[type="submit"],
+.kenzap .kenzap-blog-carousel-1 img,
+.kenzap .kenzap-blog-carousel-1 h3,
+.kenzap .kenzap-blog-carousel-1 h4,
+.kenzap .kenzap-blog-carousel-1 ul,
+.kenzap .kenzap-blog-carousel-1 li,
+.kenzap .kenzap-blog-carousel-1 p,
+.kenzap .kenzap-blog-carousel-1 a{
+	padding: 0;
+	margin: 0;
+	box-shadow: none;
+	border: none;
+	text-decoration: none;
+	list-style:none
+}
+
+.kenzap .kenzap-blog-carousel-1 div{
+	box-sizing: border-box;
+}
+
+.kenzap .kenzap-blog-carousel-1 .clearfix:after{
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+.kenzap .kenzap-blog-carousel-1 img{
+	display:block;
+	max-width:100%;
+}
+
+.kenzap .kenzap-blog-carousel-1 .kenzap-container{
+	max-width:1170px;
+	padding:0 15px;
+	margin:0 auto;
+	display: none;
+	box-sizing: border-box;
+}
+
+.kenzap .kenzap-blog-carousel-1{
+	padding: var(--paddingspx, 0px) 0;
+}
+
+.kenzap .kenzap-blog-carousel-1.autoPadding {
+	padding: calc(30px + (var(--paddings) - 30) * ((100vw - 300px) / (1600 - 300))) 0;
+}
+
+.kenzap .kenzap-blog-carousel-1 .owl-carousel .owl-prev{
+	width: 50px;
+	height: 50px;
+	position:absolute;
+	top:0;
+	left:0;
+	bottom:0;
+	margin:auto;
+	padding:0 0 100px
+}
+
+.kenzap .kenzap-blog-carousel-1 .owl-carousel .owl-next{
+	width: 50px;
+	height: 50px;
+	position:absolute;
+	top:0;
+	right:0;
+	bottom:0;
+	margin:auto
+}
+
+.kenzap .kenzap-blog-carousel-1 .owl-carousel .owl-prev span{
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 40px;
+	line-height: 40px;
+	width: 50px;
+	height: 50px;
+	color: #fff;
+	background: var(--tc, #333);
+	text-align: center;
+}
+
+.kenzap .kenzap-blog-carousel-1 .owl-carousel .owl-next span{
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 40px;
+	line-height: 40px;
+	width: 50px;
+	height: 50px;
+	color: #fff;
+	background: var(--tc, #333);
+	text-align: center;
+}
+
+.kenzap .kenzap-blog-carousel-1 .owl-carousel .owl-dots{
+	text-align:center
+}
+
+.kenzap .hide-pagi.kenzap-blog-carousel-1 .owl-carousel .owl-dots{
+	display: none;
+}
+
+.kenzap .kenzap-blog-carousel-1 .owl-carousel .owl-dot span{
+	display:block;
+	width: 9px;
+	height: 9px;
+	margin: 0 5px;
+	border-radius: 50%;
+	background: rgba(0,0,0,.1);
+	box-sizing: border-box;
+	-webkit-transition: background-color .2s ease-out;
+	-moz-transition: background-color .2s ease-out;
+	transition: background-color .2s ease-out;
+}
+
+.kenzap .kenzap-blog-carousel-1 .owl-carousel .owl-dot.active span{
+	background: var(--mc, #333);
+}
+
+.kenzap .kenzap-blog-carousel-1 .blog-item .blog-img{
+	overflow:hidden;
+	margin-top: 13px;
+}
+
+.kenzap .kenzap-blog-carousel-1.kp-square .blog-item .blog-img a:before{
+	display: block;
+    content: "";
+    padding-top: calc((1 / 1) * 100%);
+}
+
+.kenzap .kenzap-blog-carousel-1.kp-vertical .blog-item .blog-img a:before{
+	display: block;
+    content: "";
+    padding-top: calc((4 / 3) * 100%);
+}
+
+.kenzap .kenzap-blog-carousel-1.kp-horizontal .blog-item .blog-img a:before{
+	display: block;
+    content: "";
+    padding-top: calc((3 / 4) * 100%);
+}
+
+.kenzap .kenzap-blog-carousel-1 .blog-item .blog-img > a{
+	background-image: url('images/placeholder.jpg');
+	background-size:cover;
+	background-position:center center;
+	display:block;
+	transition:all .5s
+}
+
+.kenzap .kenzap-blog-carousel-1 .blog-item:hover .blog-img > a{
+	transform: scale(1.1);
+}
+
+.kenzap .kenzap-blog-carousel-1 .blog-item .blog-info{
+	padding:23px 4% 12px 4%;
+}
+
+.kenzap .kenzap-blog-carousel-1 .blog-item .blog-meta{
+	padding:0;
+	margin:0 0 10px;
+	list-style:none;
+	line-height: 1.6;
+	font-size: 10px;
+}
+
+.kenzap .kenzap-blog-carousel-1 .blog-item .blog-meta li{
+	display:inline-block;
+	position:relative;
+	padding:0 10px 0 0;
+	margin:0 10px 0 0;
+	line-height: 1.8;
+	font-size: 10px;
+}
+
+.kenzap .kenzap-blog-carousel-1 .blog-item .blog-meta li:after{
+	content: "";
+	width:5px;
+	height:5px;
+	border-radius:50%;
+	background:var(--tc, #333);
+	display:block;
+	position:absolute;
+	right:-5px;
+	top:0px;
+	bottom:0;
+	margin:auto;
+}
+
+.kenzap .kenzap-blog-carousel-1 .blog-item .blog-meta li:last-child{
+	margin:0;
+	padding:0;
+}
+
+.kenzap .kenzap-blog-carousel-1 .blog-item .blog-meta li:last-child:after{
+	display:none
+}
+
+.kenzap .kenzap-blog-carousel-1 .blog-item .blog-meta li a{
+	text-transform:uppercase;
+	text-decoration:none;
+	font-size: 10px;
+	letter-spacing: .12em;
+	line-height: 1.6;
+	font-weight:500;
+	color:var(--tc, #333);
+}
+
+.kenzap .kenzap-blog-carousel-1 .blog-item .blog-title{
+	margin: 0 0 12px;
+	line-height: 1.34;
+}
+
+.kenzap .kenzap-blog-carousel-1 .blog-item h4{
+	font-size:16px;
+}
+
+.kenzap .kenzap-blog-carousel-1 .blog-item h3{
+	font-size:26px;
+}
+
+.kenzap .kenzap-blog-carousel-1 .blog-item .blog-title a{
+	color:var(--tc, #333);
+	line-height:1.4;
+	font-weight:400;
+	text-decoration:none;
+	line-height: 1.34;
+}
+
+.kenzap .kenzap-blog-carousel-1 .blog-item:hover .blog-title a{
+	text-decoration:underline
+}
+
+.kenzap .kenzap-blog-carousel-1 .blog-item .blog-author{
+	color:var(--tc, #333);
+	font-size:10px;
+	line-height:2;
+	font-weight:500;
+	text-transform:uppercase;
+	letter-spacing: .12em;
+}
+
+.kenzap .kenzap-blog-carousel-1 .blog-item .blog-author a{
+	color:var(--tc, #333);
+	font-size:10px;
+	line-height:2;
+	font-weight:500;
+	text-decoration:none;
+	text-transform:uppercase;
+	letter-spacing: .12em;
+}

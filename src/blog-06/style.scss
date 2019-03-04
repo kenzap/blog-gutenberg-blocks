@@ -1,0 +1,226 @@
+/*--------------------------------------------------------------
+    Search Page
+--------------------------------------------------------------*/
+.kenzap .kenzap-blog-3 button,
+.kenzap .kenzap-blog-3 input[type="button"], 
+.kenzap .kenzap-blog-3 input[type="reset"], 
+.kenzap .kenzap-blog-3 input[type="submit"],
+.kenzap .kenzap-blog-3 img,
+.kenzap .kenzap-blog-3 h3,
+.kenzap .kenzap-blog-3 h4,
+.kenzap .kenzap-blog-3 ul,
+.kenzap .kenzap-blog-3 li,
+.kenzap .kenzap-blog-3 p,
+.kenzap .kenzap-blog-3 a{
+	padding: 0;
+	margin: 0;
+	box-shadow: none;
+	border: none;
+	text-decoration: none;
+	list-style:none
+}
+
+.kenzap .kenzap-blog-3 div{
+	box-sizing: border-box;
+}
+
+.kenzap .kenzap-blog-3 .clearfix:after{
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+.kenzap .kenzap-blog-3 .kenzap-container{
+	max-width:1170px;
+	padding:0 15px;
+	margin:0 auto;
+	display: block;
+	box-sizing: border-box;
+}
+
+.kenzap .kenzap-blog-3{
+	padding: var(--paddingspx, 0px) 0;
+}
+
+.kenzap .kenzap-blog-3.autoPadding {
+	padding: calc(30px + (var(--paddings) - 30) * ((100vw - 300px) / (1600 - 300))) 0;
+}
+
+.kenzap .kenzap-blog-3 .kenzap-col-4{
+	width:33.33333%;
+	float:left;
+	padding:0 15px;
+}
+
+.kenzap .kenzap-blog-3 .kenzap-lg .kenzap-row,
+.kenzap .kenzap-blog-3 .kenzap-md .kenzap-row,
+.kenzap .kenzap-blog-3 .kenzap-sm .kenzap-row,
+.kenzap .kenzap-blog-3 .kenzap-xs .kenzap-row{
+	display:flex;
+	display:-webkit-flex;
+	align-items:flex-start;
+	-webkit-align-items:flex-start;
+	justify-content:center;
+	-webkit-justify-content:center;
+	flex-wrap:wrap;
+	-webkit-flex-wrap:wrap;
+}
+
+.kenzap .kenzap-blog-3 .kenzap-sm .kenzap-col-4{
+	width:50%;
+}
+
+.kenzap .kenzap-blog-3 .kenzap-xs .kenzap-col-4{
+	width:100%;
+}
+
+.kenzap .kenzap-blog-3 .blog-item{
+	margin-top:16px;
+}
+
+.kenzap .kenzap-blog-3 .blog-item .blog-img{
+	overflow:hidden;
+	position:relative;
+	background:var(--tc, #333);
+	box-shadow: 0 0 9px 0 rgba(0,0,0,.17);
+}
+
+.kenzap .kenzap-blog-3.kp-square .blog-item .blog-img > a:before{
+	display: block;
+    content: "";
+    padding-top: calc((1 / 1) * 100%);
+}
+
+.kenzap .kenzap-blog-3.kp-vertical .blog-item .blog-img > a:before{
+	display: block;
+    content: "";
+    padding-top: calc((4 / 3) * 100%);
+}
+
+.kenzap .kenzap-blog-3.kp-horizontal .blog-item .blog-img > a:before{
+	display: block;
+    content: "";
+    padding-top: calc((3 / 4) * 100%);
+}
+
+.kenzap .kenzap-blog-3 .blog-item .blog-img > a{
+	background-image: url('images/placeholder.jpg');
+	background-size:cover;
+	background-position:center center;
+	display:block;
+	transition:all .5s
+}
+
+.kenzap .kenzap-blog-3 .blog-item:hover .blog-img > a{
+	transform: scale(1.1);
+}
+
+.kenzap .kenzap-blog-3 .blog-item:hover .blog-img img{
+	 transform: scale(1.1);
+	 opacity:.5
+}
+
+.kenzap .kenzap-blog-3 .blog-item .blog-img .blog-meta{
+	position:absolute;
+	top:0;
+	right:0;
+}
+
+.kenzap .kenzap-blog-3 .blog-item .blog-img .blog-meta a{
+	display:block;
+	width: 52px;
+	height: 67px;
+	padding: 10px 0;
+	background: var(--tc, #333);
+	color:#fff;
+	font-size:14px;
+	line-height:26px;
+	font-weight:400;
+	text-transform:uppercase;
+	text-decoration:none;
+	text-align:center
+}
+
+.kenzap .kenzap-blog-3 .blog-item .blog-img .blog-meta a span{
+	display:block;
+	font-size: 32px;
+	font-weight: 700;
+	line-height: 26px;
+	text-align:center;
+	letter-spacing:0;
+}
+
+.kenzap .kenzap-blog-3 .blog-item .blog-info{
+	padding:25px 0 15px 0;
+}
+
+.kenzap .kenzap-blog-3 .blog-item .blog-title{
+	margin: 0 0 12px;
+}
+
+.kenzap .kenzap-blog-3 .blog-item h3{
+	font-size:26px;
+}
+
+.kenzap .kenzap-blog-3 .blog-item .blog-title a{
+	color:var(--tc, #333);
+	line-height:23px;
+	font-weight:400;
+	text-transform:uppercase;
+	text-decoration:none;
+}
+
+.kenzap .kenzap-blog-3 .blog-item .read-more{
+	color:var(--tc, #333);
+	font-size:14px;
+	line-height:26px;
+	font-weight:500;
+	text-decoration:none;
+	text-transform:uppercase;
+}
+
+.kenzap .kenzap-blog-3 .blog-item .read-more span{
+	display:inline-block;
+	line-height:26px;
+	font-size:20px;
+	margin:0 0 0 5px;
+	transition:all .5s
+}
+
+.kenzap .kenzap-blog-3 .blog-item .read-more:hover span{
+	margin:0 0 0 10px;
+}
+
+@media screen and (max-width: 48em) {
+	/* width 768px */
+	
+	.kenzap .kenzap-blog-3 .kenzap-row{
+		display:flex;
+		display:-webkit-flex;
+		align-items:flex-start;
+		-webkit-align-items:flex-start;
+		justify-content:center;
+		-webkit-justify-content:center;
+		flex-wrap:wrap;
+		-webkit-flex-wrap:wrap;
+	}
+	
+	.kenzap .kenzap-blog-3 .kenzap-col-4{
+		width:50%;
+	}
+	
+}
+
+@media screen and (max-width: 30em) {
+	/* width 480px */
+	
+	.kenzap .kenzap-blog-3 .kenzap-col-4{
+		width:100%;
+	}
+}
+
+
+

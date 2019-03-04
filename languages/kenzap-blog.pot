@@ -1,0 +1,78 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Kenzap Blog\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-02 09:16+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.2.0; wp-5.1"
+
+#: src/blog-01/block.php:83 src/blog-02/block.php:108 src/blog-03/block.php:106
+#: src/blog-04/block.php:114 src/blog-05/block.php:101
+msgid "by"
+msgstr ""
+
+#: src/blog-02/block.php:92 src/blog-03/block.php:90 src/blog-04/block.php:86
+#: src/blog-05/block.php:85
+msgid "comments"
+msgstr ""
+
+#. Description of the plugin
+msgid "Easily create and customize blog section on your website"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://github.com/kenzap/kenzap-blog-gutenberg-blocks/"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://kenzap.com"
+msgstr ""
+
+#. Author of the plugin
+msgid "Kenzap"
+msgstr ""
+
+#. Name of the plugin
+msgid "Kenzap Blog"
+msgstr ""
+
+#: src/init.php:137
+msgid "Next"
+msgstr ""
+
+#: src/blog-02/block.php:92 src/blog-03/block.php:90 src/blog-04/block.php:86
+#: src/blog-05/block.php:85
+msgid "no comments"
+msgstr ""
+
+#: src/blog-01/block.php:105 src/blog-02/block.php:128
+#: src/blog-03/block.php:125 src/blog-04/block.php:135
+#: src/blog-05/block.php:114 src/blog-06/block.php:97
+msgid "no posts to display"
+msgstr ""
+
+#: src/blog-02/block.php:92 src/blog-03/block.php:90 src/blog-04/block.php:86
+#: src/blog-05/block.php:85
+msgid "one comment"
+msgstr ""
+
+#: src/blog-03/block.php:68
+msgid "Post placeholder"
+msgstr ""
+
+#: src/init.php:136
+msgid "Previous"
+msgstr ""
+
+#: src/blog-06/block.php:78
+msgid "Read More"
+msgstr ""

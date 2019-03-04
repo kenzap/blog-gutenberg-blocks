@@ -1,0 +1,21 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+ .kenzap .kenzap-blog-carousel-1 .kenzap-container .owl-carousel,
+ .kenzap .kenzap-blog-carousel-1 .kenzap-container{
+     display: block!important;
+ }
+
+ .kenzap .kenzap-blog-carousel-1 .kenzap-container .owl-carousel{
+    display: flex!important;
+    overflow-x: scroll!important;
+ }
+
+ .kenzap .kenzap-blog-carousel-1 .blog-item{
+    min-width: 240px;
+    margin:4px;
+ }
