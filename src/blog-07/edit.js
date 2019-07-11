@@ -1,11 +1,10 @@
-
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { InspectorControls, PanelColorSettings } = wp.editor;
-const { RangeControl, CheckboxControl, ToggleControl, PanelBody, ServerSideRender, SelectControl, TextControl } = wp.components;
+const { RangeControl, PanelBody, RadioControl, ToggleControl, ServerSideRender, CheckboxControl, TextControl } = wp.components;
 import { typographyArr } from './block';
 import { InspectorContainer } from '../commonComponents/container/container';
-import { TypographyContainer, getTypography, getTypographyInline } from '../commonComponents/typography/typography';
+import { TypographyContainer, getTypographyInline } from '../commonComponents/typography/typography';
 
 /**
  * The edit function describes the structure of your block in the context of the editor.
@@ -27,37 +26,31 @@ export default class Edit extends Component {
         setAttributes({ t0: getTypographyInline( attributes, 0 )});
         setAttributes({ t1: getTypographyInline( attributes, 1 )});
         setAttributes({ t2: getTypographyInline( attributes, 2 )});
+        setAttributes({ t3: getTypographyInline( attributes, 3 )});
 
         return (
-            <div className={ className }>
-                <InspectorControls
-                    setAttributes={ setAttributes }
-                    { ...attributes }
-                >
+            <div>
+                <InspectorControls>
                     <PanelBody
                         title={ __( 'General', 'kenzap-blog' ) }
                         initialOpen={ false }
                     >
 
-                        <TextControl
-                            label={ __( 'Category', 'kenzap-blog' ) }
-                            value={ attributes.category }
-                            onChange={ ( category ) => setAttributes( { category } ) }
-                            help={ __( 'Restrict posts by category. To view categories go to Posts > Categories section.', 'kenzap-blog' ) }
+                        <RangeControl
+                            label={ __( 'Records per page', 'kenzap-blog' ) }
+                            value={ attributes.per_page }
+                            onChange={ ( value ) => setAttributes( { per_page: value } ) }
+                            min={ 1 }
+                            max={ 50 }
+                            help={ __( 'Specify the maximum number of posts to display per page.', 'kenzap-blog' ) }
                         />
-                        
+                                             
                         <ToggleControl
-                            label={ __( 'Hide posts with no image', 'kenzap-blog' ) }
-                            checked={ attributes.ignoreNoImage}
-                            onChange={ (ignoreNoImage) => setAttributes( { ignoreNoImage } ) }
+                            label={ __( 'Show sticky posts', 'kenzap-blog' ) }
+                            checked={ attributes.showSticky}
+                            onChange={ (showSticky) => setAttributes( { showSticky } ) }
                         />
 
-                        <ToggleControl
-                            label={ __( 'Hide sticky posts', 'kenzap-blog' ) }
-                            checked={ attributes.ignoreSticky}
-                            onChange={ (ignoreSticky) => setAttributes( { ignoreSticky } ) }
-                        />
-                        
                         <ToggleControl
                             label={ __( 'Show category', 'kenzap-blog' ) }
                             checked={ attributes.showCategory}
@@ -77,34 +70,34 @@ export default class Edit extends Component {
                         />
 
                         <ToggleControl
-                            label={ __( 'Show tags', 'kenzap-blog' ) }
+                            label={ __( 'Show author', 'kenzap-blog' ) }
                             checked={ attributes.showTags}
                             onChange={ (showTags) => setAttributes( { showTags } ) }
                         />
-                        
-                        <SelectControl
-                            label={ __( 'Order by', 'kenzap-blog' ) }
-                            value={ attributes.orderby }
+
+                        <RadioControl
+                            label={ __( 'Alignment', 'kenzap-blog' ) }
+                            selected={ attributes.txAlign }
                             options={ [
-                                { label: __( 'Newest to Oldest', 'kenzap-blog' ), value: 'date/desc' },
-                                { label: __( 'Oldest to Newest', 'kenzap-blog' ), value: 'date/asc' },
-                                { label: __( 'A → Z', 'kenzap-blog' ), value: 'title/asc' },
-                                { label: __( 'Z → A', 'kenzap-blog' ), value: 'title/desc' },
+                                { label: __( 'Left', 'kenzap-blog' ), value: 'left' },
+                                { label: __( 'Center', 'kenzap-blog' ), value: 'center' },
+                                { label: __( 'Right', 'kenzap-blog' ), value: 'right' },
                             ] }
-                            onChange={ ( orderby ) => {
-                                setAttributes( { orderby } );
-                            } }
+                            onChange={ ( txAlign ) => { setAttributes( { txAlign } ) } }
                         />
 
-                        <RangeControl
-                            label={ __( 'Records per page', 'kenzap-blog' ) }
-                            value={ attributes.per_page }
-                            onChange={ ( value ) => setAttributes( { per_page: value } ) }
-                            min={ 1 }
-                            max={ 50 }
-                            help={ __( 'Specify the maximum number of posts to display per page.', 'kenzap-blog' ) }
+                        <CheckboxControl
+                            label={ __( 'Show excerpt', 'kenzap-blog' ) }
+                            checked={ attributes.showExcerpt}
+                            onChange={ (showExcerpt) => setAttributes( { showExcerpt } ) }
                         />
-                     
+
+                        <TextControl
+                            label={ __( 'Search text', 'kenzap-blog' ) }
+                            value={ attributes.searchText }
+                            onChange={ ( searchText ) => {  setAttributes( { searchText } ); } }
+                        />
+
                         <CheckboxControl
                             label={ __( 'Pagination', 'kenzap-blog' ) }
                             checked={ attributes.pagination}
@@ -113,18 +106,24 @@ export default class Edit extends Component {
                         />
 
                         <PanelColorSettings
-                            title={ __( 'Highlight color', 'kenzap-blog' ) }
+                            title={ __( 'Colors', 'kenzap-blog' ) }
                             initialOpen={ false }
                             colorSettings={ [
-                                    {
-                                        value: attributes.mainColor,
-                                        onChange: ( value ) => {
-                                            return setAttributes( { mainColor: value } );
-                                        },
-                                        label: __( 'Selected', 'kenzap-blog' ),
+                                {
+                                    value: attributes.textColor,
+                                    onChange: ( value ) => {
+                                        return setAttributes( { textColor: value } );
                                     },
-                                ] }
-                            help={ __( 'Color of pagination and other small details.', 'kenzap-blog' ) }
+                                    label: __( 'Highlight', 'kenzap-blog' ),
+                                },
+                                {
+                                    value: attributes.textColor2,
+                                    onChange: ( value ) => {
+                                        return setAttributes( { textColor2: value } );
+                                    },
+                                    label: __( 'Button text', 'kenzap-blog' ),
+                                },
+                            ] }
                         />
 
                     </PanelBody>
@@ -141,12 +140,13 @@ export default class Edit extends Component {
                         withPadding
                         withWidth100
                         withBackground
+                        withAutoPadding
                     />
                 </InspectorControls>
 
                 <ServerSideRender
-                    block="kenzap/blog-03"
-                    attributes={ {   
+                    block="kenzap/blog-07"
+                    attributes={ {
                         // container
                         containerMaxWidth: attributes.containerMaxWidth,
                         containerPadding: attributes.containerPadding,
@@ -157,27 +157,35 @@ export default class Edit extends Component {
                         backgroundPosition: attributes.backgroundPosition,
                         parallax: attributes.parallax,
                         autoPadding: attributes.autoPadding,
-                        //block
-                        align: attributes.align,              
-                        displayType: attributes.displayType,
-                        columns: attributes.columns,
-                        ignoreNoImage: attributes.ignoreNoImage,
-                        ignoreSticky: attributes.ignoreSticky,
+                        //block                        
+                        align: attributes.align,
+                        checkSidebar: false,
+                        serverSide: true,
+                        boxed: attributes.boxed,
+                        link: attributes.link,
+                        borderRadius: attributes.borderRadius,
+                        fontWeight: attributes.fontWeight,
+                        textColor: attributes.textColor,
+                        textColor2: attributes.textColor2,
+                        txAlign: attributes.txAlign,
+                        per_page: attributes.per_page, 
+                        showSticky: attributes.showSticky,
                         showCategory: attributes.showCategory,
-                        showDate: attributes.showDate,
                         showComments: attributes.showComments,
                         showTags: attributes.showTags,
-                        category: attributes.category,
-                        per_page: attributes.per_page, 
-                        mainColor: attributes.mainColor,  
-                        orderby: attributes.orderby,  
+                        showDate: attributes.showDate,
+                        showExcerpt: attributes.showExcerpt,
                         pagination: attributes.pagination,  
+                        searchText: attributes.searchText,  
+                        className: this.props.className,
                         t0: attributes.t0,
                         t1: attributes.t1,
                         t2: attributes.t2,
+                        t3: attributes.t3,
                         serverSide: true,
                     } }
                 />
+
             </div>
         );
     }

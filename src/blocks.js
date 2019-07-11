@@ -15,3 +15,4 @@ import './blog-03/block.js';
 import './blog-04/block.js';
 import './blog-05/block.js';
 import './blog-06/block.js';
+import './blog-07/block.js';

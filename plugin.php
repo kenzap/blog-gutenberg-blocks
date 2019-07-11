@@ -5,7 +5,7 @@
  * Description: Easily create and customize blog section on your website
  * Author: Kenzap
  * Author URI: https://kenzap.com
- * Version: 1.0.0
+ * Version: 1.1.0
  * License: GPL2+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain: kenzap-blog
@@ -77,8 +77,11 @@ if (version_compare(PHP_VERSION, '5.6', '<')) {
     return;
 }
 
-add_image_size( 'kenzap-blog-medium', 550, 0, false );
-add_image_size( 'kenzap-blog-large', 950, 0, false );
+// add_image_size( 'kenzap-blog-medium', 550, 0, false );
+// add_image_size( 'kenzap-blog-large', 950, 0, false );
+
+add_image_size("kp_banner", 1200);
+add_image_size("kp_l", 600);
 
 /**
  * Block Initializer.

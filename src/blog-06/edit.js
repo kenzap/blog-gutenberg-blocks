@@ -1,9 +1,10 @@
-
-const { __ } = wp.i18n; // Import __() from wp.i18n
+const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { InspectorControls, PanelColorSettings } = wp.editor;
 const { RangeControl, CheckboxControl, ToggleControl, RadioControl, PanelBody, ServerSideRender, SelectControl, TextControl } = wp.components;
-import { InspectorContainer, ContainerEdit } from '../commonComponents/container/container';
+import { typographyArr } from './block';
+import { InspectorContainer } from '../commonComponents/container/container';
+import { TypographyContainer, getTypographyInline } from '../commonComponents/typography/typography';
 
 /**
  * The edit function describes the structure of your block in the context of the editor.
@@ -14,9 +15,6 @@ import { InspectorContainer, ContainerEdit } from '../commonComponents/container
  * @returns {Node} rendered component
  */
 export default class Edit extends Component {
-    state = {
-        activeSubBlock: -1,
-    };
 
     render() {
         const {
@@ -24,6 +22,9 @@ export default class Edit extends Component {
             attributes,
             setAttributes,
         } = this.props;
+
+        setAttributes({ t0: getTypographyInline( attributes, 0 )});
+        setAttributes({ t1: getTypographyInline( attributes, 1 )});
 
         return (
             <div className={ className }>
@@ -69,27 +70,9 @@ export default class Edit extends Component {
                         />
 
                         <ToggleControl
-                            label={ __( 'Show category', 'kenzap-blog' ) }
-                            checked={ attributes.showCategory}
-                            onChange={ (showCategory) => setAttributes( { showCategory } ) }
-                        />
-
-                        <ToggleControl
-                            label={ __( 'Show date', 'kenzap-blog' ) }
+                            label={ __( 'Show link', 'kenzap-blog' ) }
                             checked={ attributes.showDate}
                             onChange={ (showDate) => setAttributes( { showDate } ) }
-                        />
-
-                        <ToggleControl
-                            label={ __( 'Show comments', 'kenzap-blog' ) }
-                            checked={ attributes.showComments}
-                            onChange={ (showComments) => setAttributes( { showComments } ) }
-                        />
-
-                        <ToggleControl
-                            label={ __( 'Show tags', 'kenzap-blog' ) }
-                            checked={ attributes.showTags}
-                            onChange={ (showTags) => setAttributes( { showTags } ) }
                         />
 
                         <SelectControl
@@ -106,6 +89,12 @@ export default class Edit extends Component {
                             } }
                         />
 
+                        <TextControl
+                            label={ __( 'Link text', 'kenzap-blog' ) }
+                            value={ attributes.linkText }
+                            onChange={ ( linkText ) => setAttributes( { linkText } ) }
+                        />
+
                         <RangeControl
                             label={ __( 'Records per page', 'kenzap-blog' ) }
                             value={ attributes.per_page }
@@ -119,10 +108,13 @@ export default class Edit extends Component {
                             label={ __( 'Pagination', 'kenzap-blog' ) }
                             checked={ attributes.pagination}
                             onChange={ (pagination) => setAttributes( { pagination } ) }
+                            help={ __( 'Preview on frontend only.', 'kenzap-blog' ) }
                         />
 
-                        <PanelColorSettings
-                            title={ __( 'Text color', 'kenzap-blog' ) }
+                    </PanelBody>
+                    
+                    <PanelColorSettings
+                            title={ __( 'Colors', 'kenzap-blog' ) }
                             initialOpen={ false }
                             colorSettings={ [
                                     {
@@ -130,27 +122,30 @@ export default class Edit extends Component {
                                         onChange: ( value ) => {
                                             return setAttributes( { textColor: value } );
                                         },
-                                        label: __( 'Selected', 'kenzap-blog' ),
-                                    },
-                                ] }
-                        />
-
-                        <PanelColorSettings
-                            title={ __( 'Highlight color', 'kenzap-blog' ) }
-                            initialOpen={ false }
-                            colorSettings={ [
+                                        label: __( 'Text', 'kenzap-blog' ),
+                                    },    
+                                    {
+                                        value: attributes.textColor2,
+                                        onChange: ( value ) => {
+                                            return setAttributes( { textColor2: value } );
+                                        },
+                                        label: __( 'Pagination numbers', 'kenzap-blog' ),
+                                    },    
                                     {
                                         value: attributes.mainColor,
                                         onChange: ( value ) => {
                                             return setAttributes( { mainColor: value } );
                                         },
-                                        label: __( 'Selected', 'kenzap-blog' ),
+                                        label: __( 'Highlight', 'kenzap-blog' ),
                                     },
                                 ] }
-                            help={ __( 'Color of pagination and other small details.', 'kenzap-blog' ) }
                         />
 
-                    </PanelBody>
+                    <TypographyContainer
+                        setAttributes={ setAttributes }
+                        typographyArr={ typographyArr }
+                        { ...attributes }
+                    />
 
                     <InspectorContainer
                         setAttributes={ setAttributes }
@@ -163,21 +158,36 @@ export default class Edit extends Component {
 
                 <ServerSideRender
                     block="kenzap/blog-06"
-                    attributes={ {                  
+                    attributes={ {    
+                        // container
+                        containerMaxWidth: attributes.containerMaxWidth,
+                        containerPadding: attributes.containerPadding,
+                        containerSidePadding: attributes.containerSidePadding,
+                        backgroundColor: attributes.backgroundColor,
+                        backgroundImage: attributes.backgroundImage,
+                        backgroundStyle: attributes.backgroundStyle,
+                        backgroundPosition: attributes.backgroundPosition,
+                        parallax: attributes.parallax,
+                        autoPadding: attributes.autoPadding,
+                        //block                            
+                        align: attributes.align,         
                         displayType: attributes.displayType,
                         columns: attributes.columns,
                         showSticky: attributes.showSticky,
                         ignoreNoImage: attributes.ignoreNoImage,
                         showCategory: attributes.showCategory,
-                        showComments: attributes.showComments,
-                        showTags: attributes.showTags,
+                        linkText: attributes.linkText,
                         showDate: attributes.showDate,
                         category: attributes.category,
                         per_page: attributes.per_page, 
                         mainColor: attributes.mainColor,  
                         textColor: attributes.textColor,  
+                        textColor2: attributes.textColor2,  
                         orderby: attributes.orderby,  
                         pagination: attributes.pagination,  
+                        t0: attributes.t0,
+                        t1: attributes.t1,
+                        t2: attributes.t2,
                         serverSide: true,
                     } }
                 />

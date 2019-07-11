@@ -1,27 +1,3 @@
-# Blog Gutenberg Blocks
-
-Create beautiful blog section on your website. 
-To be used with WordPress Gutenberg.
-
-
-![Create beatiful blog post listing section with Gutenberg](https://kenzap.com/website/img/blog-3.jpeg)
-
-<b>Block is easy customizable:</b>
-
-<ul>
-<li>Date, categories, tags preview variations</li>
-<li>Adjust font size</li>
-<li>Set up owl carousel</li>
-<li>List blog posts in masonry style</li>
-<li>Create multiple rows</li>
-<li>Increase offset between blocks</li>
-<li>Set background color or image</li>
-<li>Wide and narrow layout support</li>
-<li>5 different layouts support</li>
-</ul>
-
-# How to build the block
-
 This project was bootstrapped with [Create Guten Block](https://github.com/ahmadawais/create-guten-block).
 
 Below you will find some information on how to run scripts.

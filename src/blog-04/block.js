@@ -1,18 +1,50 @@
-/**
- * BLOCK: kenzap-blog
- *
- * Registering a basic block with Gutenberg.
- * Simple block, renders and saves the same content without any interactivity.
- */
-
-//  Import CSS.
 import './style.scss';
 import './editor.scss';
 import Edit from './edit';
 import { blockProps, ContainerSave } from '../commonComponents/container/container';
 
-const { __ } = wp.i18n; // Import __() from wp.i18n
-const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
+const { __ } = wp.i18n;
+const { registerBlockType } = wp.blocks;
+
+/**
+ * Define typography defaults
+ */
+export const typographyArr = JSON.stringify([
+    {
+        'title': __( '- Title', 'kenzap-cta' ),
+        //'type': 'title',
+        'font-size': 18,
+        'font-weight': 4,
+        'line-height': 24,
+        'margin-bottom': 0,
+        'color': '#333333',
+	},
+	{
+        'title': __( '- Text', 'kenzap-cta' ),
+        'font-size': 14,
+        'font-weight': 4,
+        'line-height': 23,
+        'margin-bottom': 20,
+        'color': '#333333'
+    },
+    {
+        'title': __( '- Meta', 'kenzap-cta' ),
+        'font-size': 10,
+        'font-weight': 5,
+        'line-height': 18,
+        'margin-bottom': 0,
+        'color': '#333333'
+    },
+    {
+        'title': __( '- Author', 'kenzap-cta' ),
+        'font-size': 10,
+        'font-weight': 5,
+        'line-height': 20,
+        'text-transform': 'A',
+        'margin-bottom': 0,
+        'color': '#333333'
+    },
+]);
 
 /**
  * Register: aa Gutenberg Block.
@@ -37,6 +69,9 @@ registerBlockType( 'kenzap/blog-04', {
 		__( 'Posts', 'kenzap-blog' ),
 		__( 'News', 'kenzap-blog' ),
 	],
+	supports: {
+        align: [ 'full', 'wide' ],
+    },
 	attributes: {
 		...blockProps,
 
@@ -45,7 +80,6 @@ registerBlockType( 'kenzap/blog-04', {
 			source: 'children',
 			selector: 'h2',
 		},
-
 		displayType: {
 			type: 'string',
 			default: 'kp-horizontal',
@@ -84,15 +118,11 @@ registerBlockType( 'kenzap/blog-04', {
 		}, 
 		per_page: {
 			type: 'number',
-			default: 5
+			default: 4
 		}, 
 		mainColor: {
 			type: 'string',
 			default: '#ff6600'
-		},
-		textColor: {
-			type: 'string',
-			default: '#333'
 		},
 		orderby: {
 			type: 'orderby',
@@ -102,7 +132,22 @@ registerBlockType( 'kenzap/blog-04', {
 			type: 'boolean',
 			default: false
 		}, 
-
+        typography: {
+            type: 'array',
+            default: [],
+		},
+		t0: {
+			type: 'string',
+		},
+		t1: {
+			type: 'string',
+		},
+		t2: {
+			type: 'string',
+		},
+		t3: {
+			type: 'string',
+		},
 	},
 	/**
 	 * The edit function describes the structure of your block in the context of the editor.

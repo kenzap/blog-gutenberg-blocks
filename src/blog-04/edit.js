@@ -1,9 +1,11 @@
 
-const { __ } = wp.i18n; // Import __() from wp.i18n
+const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { InspectorControls, PanelColorSettings } = wp.editor;
 const { RangeControl, CheckboxControl, ToggleControl, RadioControl, PanelBody, ServerSideRender, SelectControl, TextControl } = wp.components;
-import { InspectorContainer, ContainerEdit } from '../commonComponents/container/container';
+import { typographyArr } from './block';
+import { InspectorContainer } from '../commonComponents/container/container';
+import { TypographyContainer, getTypography, getTypographyInline } from '../commonComponents/typography/typography';
 
 /**
  * The edit function describes the structure of your block in the context of the editor.
@@ -14,9 +16,6 @@ import { InspectorContainer, ContainerEdit } from '../commonComponents/container
  * @returns {Node} rendered component
  */
 export default class Edit extends Component {
-    state = {
-        activeSubBlock: -1,
-    };
 
     render() {
         const {
@@ -24,6 +23,10 @@ export default class Edit extends Component {
             attributes,
             setAttributes,
         } = this.props;
+
+        setAttributes({ t0: getTypographyInline( attributes, 0 )});
+        setAttributes({ t1: getTypographyInline( attributes, 1 )});
+        setAttributes({ t2: getTypographyInline( attributes, 2 )});
 
         return (
             <div className={ className }>
@@ -119,20 +122,7 @@ export default class Edit extends Component {
                             label={ __( 'Pagination', 'kenzap-blog' ) }
                             checked={ attributes.pagination}
                             onChange={ (pagination) => setAttributes( { pagination } ) }
-                        />
-
-                        <PanelColorSettings
-                            title={ __( 'Text color', 'kenzap-blog' ) }
-                            initialOpen={ false }
-                            colorSettings={ [
-                                    {
-                                        value: attributes.textColor,
-                                        onChange: ( value ) => {
-                                            return setAttributes( { textColor: value } );
-                                        },
-                                        label: __( 'Selected', 'kenzap-blog' ),
-                                    },
-                                ] }
+                            help={ __( 'Preview on frontend only.', 'kenzap-blog' ) }
                         />
 
                         <PanelColorSettings
@@ -152,6 +142,12 @@ export default class Edit extends Component {
 
                     </PanelBody>
 
+                    <TypographyContainer
+                        setAttributes={ setAttributes }
+                        typographyArr={ typographyArr }
+                        { ...attributes }
+                    />
+
                     <InspectorContainer
                         setAttributes={ setAttributes }
                         { ...attributes }
@@ -163,7 +159,19 @@ export default class Edit extends Component {
 
                 <ServerSideRender
                     block="kenzap/blog-04"
-                    attributes={ {                  
+                    attributes={ {    
+                        // container
+                        containerMaxWidth: attributes.containerMaxWidth,
+                        containerPadding: attributes.containerPadding,
+                        containerSidePadding: attributes.containerSidePadding,
+                        backgroundColor: attributes.backgroundColor,
+                        backgroundImage: attributes.backgroundImage,
+                        backgroundStyle: attributes.backgroundStyle,
+                        backgroundPosition: attributes.backgroundPosition,
+                        parallax: attributes.parallax,
+                        autoPadding: attributes.autoPadding,
+                        //block        
+                        align: attributes.align,      
                         displayType: attributes.displayType,
                         columns: attributes.columns,
                         ignoreNoImage: attributes.ignoreNoImage,
@@ -175,9 +183,12 @@ export default class Edit extends Component {
                         category: attributes.category,
                         per_page: attributes.per_page, 
                         mainColor: attributes.mainColor,  
-                        textColor: attributes.textColor,  
                         orderby: attributes.orderby,  
                         pagination: attributes.pagination,  
+                        t0: attributes.t0,
+                        t1: attributes.t1,
+                        t2: attributes.t2,
+                        t3: attributes.t3,
                         serverSide: true,
                     } }
                 />

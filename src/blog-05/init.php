@@ -5,6 +5,10 @@ function kenzap_blog_listing_05() {
 	require KENZAP_BLOG.'/src/commonComponents/container/container-var.php';
 
 	$attributes = array(
+		'align' => array(
+			'type'    => 'string',
+			'default' => '',
+		),
 		'serverSide'    => array(
 			'type'    => 'boolean',
 			'default' => false,
@@ -64,6 +68,15 @@ function kenzap_blog_listing_05() {
 		'mainColor' => array(
 			'type' => 'string',	
 			'default' => '#ff6600'
+		),
+		't0' => array(
+			'type' => 'string',	
+		),
+		't1' => array(
+			'type' => 'string',	
+		),
+		't2' => array(
+			'type' => 'string',	
 		),
 	);
 

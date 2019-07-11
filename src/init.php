@@ -85,7 +85,7 @@ function kenzap_blog_list_editor_assets() {
 		wp_set_script_translations( 'kenzap-blog', 'kenzap-blog', KENZAP_BLOG . '/languages/' );
 	}
 
-    wp_add_inline_script( 'wp-blocks', 'var kenzap_blog_gutenberg_path = "' .KENZAP_BLOG_PATH.'"', 'before');
+    wp_add_inline_script( 'wp-blocks', 'var kenzap_blog_gutenberg_path = "' .wp_parse_url(KENZAP_BLOG_PATH)['path'].'"', 'before');
 } // End function kenzap_feature_list_cgb_editor_assets().
 
 // Hook: Editor assets.
@@ -102,17 +102,22 @@ function kenzap_blog_add_specific_features( $post_object ) {
         foreach ($blocks as $block) {
 
             if ($block['blockName'] == 'kenzap/blog-03') {
-                wp_register_script( 'masonry', KENZAP_BLOG_PATH . 'packery-mode.pkgd.min.js');
-                wp_enqueue_script( 'masonry' );
+				wp_enqueue_script( 'imagesloaded', 'https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.1.8/imagesloaded.pkgd.min.js', array('jquery') );
+                wp_enqueue_script( 'masonry', KENZAP_BLOG_PATH . 'packery-mode.pkgd.min.js' );
                 wp_enqueue_script( 'kenzap/blog-03', plugins_url( 'blog-03/script.js', __FILE__ ), array('jquery') );
 			}
-			
+		
 			if ($block['blockName'] == 'kenzap/blog-05') {
                 wp_register_script( 'owl-carousel', KENZAP_BLOG_PATH . 'owl-carousel/owl.carousel.min.js');
 				wp_enqueue_script( 'owl-carousel' );
 		    	wp_register_style('owl-carousel', KENZAP_BLOG_PATH.'owl-carousel/owl.carousel.css');
             	wp_enqueue_style( 'owl-carousel');
                 wp_enqueue_script( 'kenzap/blog-05', plugins_url( 'blog-05/script.js', __FILE__ ), array('jquery') );
+			}
+			
+			if ($block['blockName'] == 'kenzap/blog-07') {
+                
+                wp_enqueue_style( 'font-awesome', 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array() );
             }
         }
     }
@@ -158,3 +163,4 @@ require_once 'blog-03/init.php';
 require_once 'blog-04/init.php';
 require_once 'blog-05/init.php';
 require_once 'blog-06/init.php';
+require_once 'blog-07/init.php';

@@ -1,10 +1,4 @@
-/*--------------------------------------------------------------
-    Search Page
---------------------------------------------------------------*/
 .kenzap .kenzap-blog-carousel-1 button,
-.kenzap .kenzap-blog-carousel-1 input[type="button"], 
-.kenzap .kenzap-blog-carousel-1 input[type="reset"], 
-.kenzap .kenzap-blog-carousel-1 input[type="submit"],
 .kenzap .kenzap-blog-carousel-1 img,
 .kenzap .kenzap-blog-carousel-1 h3,
 .kenzap .kenzap-blog-carousel-1 h4,
@@ -40,18 +34,18 @@
 
 .kenzap .kenzap-blog-carousel-1 .kenzap-container{
 	max-width:1170px;
-	padding:0 15px;
+	padding:0px var(--paddings2, 0);
 	margin:0 auto;
 	display: none;
 	box-sizing: border-box;
 }
 
-.kenzap .kenzap-blog-carousel-1{
-	padding: var(--paddingspx, 0px) 0;
-}
+// .kenzap .kenzap-blog-carousel-1{
+// 	padding: var(--paddingspx, 0px) 0;
+// }
 
 .kenzap .kenzap-blog-carousel-1.autoPadding {
-	padding: calc(30px + (var(--paddings) - 30) * ((100vw - 300px) / (1600 - 300))) 0;
+	padding: calc(30px + (var(--paddings) - 30) * ((100vw - 300px) / (1600 - 300))) 0!important;;
 }
 
 .kenzap .kenzap-blog-carousel-1 .owl-carousel .owl-prev{
@@ -187,7 +181,7 @@
 	width:5px;
 	height:5px;
 	border-radius:50%;
-	background:var(--tc, #333);
+	background:var(--mc, #333);
 	display:block;
 	position:absolute;
 	right:-5px;
@@ -206,12 +200,11 @@
 }
 
 .kenzap .kenzap-blog-carousel-1 .blog-item .blog-meta li a{
-	text-transform:uppercase;
 	text-decoration:none;
-	font-size: 10px;
-	letter-spacing: .12em;
-	line-height: 1.6;
-	font-weight:500;
+	// font-size: 10px;
+	// letter-spacing: .12em;
+	// line-height: 1.6;
+	// font-weight:500;
 	color:var(--tc, #333);
 }
 
@@ -241,20 +234,19 @@
 }
 
 .kenzap .kenzap-blog-carousel-1 .blog-item .blog-author{
-	color:var(--tc, #333);
-	font-size:10px;
-	line-height:2;
-	font-weight:500;
-	text-transform:uppercase;
-	letter-spacing: .12em;
+	// color:var(--tc, #333);
+	// font-size:10px;
+	// line-height:2;
+	// font-weight:500;
+	//letter-spacing: .12em;
 }
 
 .kenzap .kenzap-blog-carousel-1 .blog-item .blog-author a{
-	color:var(--tc, #333);
-	font-size:10px;
-	line-height:2;
-	font-weight:500;
+	color:var(--cl, #333);
+	// font-size:10px;
+	// line-height:2;
+	// font-weight:500;
 	text-decoration:none;
-	text-transform:uppercase;
-	letter-spacing: .12em;
+	// text-transform:uppercase;
+	// letter-spacing: .12em;
 }

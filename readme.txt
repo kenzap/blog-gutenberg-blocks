@@ -2,8 +2,8 @@ Kenzap Blog
 Contributors: kenzap
 Tags: blog, feed, news, posts
 Requires at least: 5.0
-Tested up to: 5.1.9
-Stable tag: 1.0.0
+Tested up to: 5.2
+Stable tag: 1.1.0
 Donate link: https://kenzap.com/wordpress-plugin-donation-page/
 Requires PHP: 5.6
 License: GPL2+
@@ -58,3 +58,14 @@ This is a first release
 
 = v1.0.0 =
 New: Initial release
+
+= v1.0.1 =
+New: Align wide and align full support
+Update: blog 6 more text and color formatting options
+
+= v1.0.2 =
+New: Wordpress global search result page
+
+= v1.1.0 =
+New: more control over typography
+Update: live preview background settings improved

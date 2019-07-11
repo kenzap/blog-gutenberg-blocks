@@ -5,6 +5,10 @@ function kenzap_blog_listing_06() {
 	require KENZAP_BLOG.'/src/commonComponents/container/container-var.php';
 
 	$attributes = array(
+		'align' => array(
+			'type'    => 'string',
+			'default' => '',
+		),
 		'serverSide'    => array(
 			'type'    => 'boolean',
 			'default' => false,
@@ -33,13 +37,9 @@ function kenzap_blog_listing_06() {
 			'type'    => 'boolean',
 			'default' => true,
 		),
-		'showComments'    => array(
-			'type'    => 'boolean',
-			'default' => true,
-		),
-		'showTags'    => array(
-			'type'    => 'boolean',
-			'default' => true,
+		'linkText'    => array(
+			'type'    => 'string',
+			'default' => 'Read more',
 		),
 		'category' => array(
 			'type'    => 'string',
@@ -50,6 +50,10 @@ function kenzap_blog_listing_06() {
 			'default' => 3,
 		),
 		'textColor' => array(
+			'type' => 'string',	
+			'default' => '#fff'
+		),
+		'textColor2' => array(
 			'type' => 'string',	
 			'default' => '#333'
 		),
@@ -63,7 +67,16 @@ function kenzap_blog_listing_06() {
 		),
 		'mainColor' => array(
 			'type' => 'string',	
-			'default' => '#ff6600'
+			'default' => '#333'
+		),
+		't0' => array(
+			'type' => 'string',	
+		),
+		't1' => array(
+			'type' => 'string',	
+		),
+		't2' => array(
+			'type' => 'string',	
 		),
 	);
 

@@ -1,18 +1,31 @@
-/**
- * BLOCK: kenzap-blog
- *
- * Registering a basic block with Gutenberg.
- * Simple block, renders and saves the same content without any interactivity.
- */
-
-//  Import CSS.
 import './style.scss';
 import './editor.scss';
 import Edit from './edit';
 import { blockProps, ContainerSave } from '../commonComponents/container/container';
+const { __ } = wp.i18n;
+const { registerBlockType } = wp.blocks;
 
-const { __ } = wp.i18n; // Import __() from wp.i18n
-const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
+/**
+ * Define typography defaults
+ */
+export const typographyArr = JSON.stringify([
+    {
+        'title': __( '- Title', 'kenzap-cta' ),
+        'font-size': 26,
+        'font-weight': 6,
+        'line-height': 23,
+        'margin-bottom': 0,
+        'color': '#333333',
+    },
+    {
+        'title': __( '- CTA', 'kenzap-cta' ),
+        'font-size': 14,
+        'font-weight': 5,
+        'line-height': 26,
+        'margin-bottom': 0,
+        'color': '#333333'
+    },
+]);
 
 /**
  * Register: aa Gutenberg Block.
@@ -37,6 +50,9 @@ registerBlockType( 'kenzap/blog-06', {
 		__( 'Posts', 'kenzap-blog' ),
 		__( 'News', 'kenzap-blog' ),
 	],
+	supports: {
+        align: [ 'full', 'wide' ],
+    },
 	attributes: {
 		...blockProps,
 
@@ -69,14 +85,10 @@ registerBlockType( 'kenzap/blog-06', {
 			type: 'boolean',
 			default: true
 		},
-		showComments: {
-			type: 'boolean',
-			default: true
-		},
-		showTags: {
-			type: 'boolean',
-			default: true
-		},
+		linkText: {
+			type: 'string',
+			default: 'Read more'
+		}, 
 		category: {
 			type: 'string',
 			default: ''
@@ -87,9 +99,13 @@ registerBlockType( 'kenzap/blog-06', {
 		}, 
 		mainColor: {
 			type: 'string',
-			default: '#ff6600'
+			default: '#333'
 		},
 		textColor: {
+			type: 'string',
+			default: '#fff'
+		},
+		textColor2: {
 			type: 'string',
 			default: '#333'
 		},
@@ -101,7 +117,19 @@ registerBlockType( 'kenzap/blog-06', {
 			type: 'boolean',
 			default: false
 		}, 
-
+        typography: {
+            type: 'array',
+            default: [],
+		},
+		t0: {
+			type: 'string',
+		},
+		t1: {
+			type: 'string',
+		},
+		t2: {
+			type: 'string',
+		},
 	},
 	/**
 	 * The edit function describes the structure of your block in the context of the editor.
@@ -114,7 +142,6 @@ registerBlockType( 'kenzap/blog-06', {
 	edit: function( props ) {
 
 		return ( <Edit { ...props } /> );
-
 	},
 
 	/**

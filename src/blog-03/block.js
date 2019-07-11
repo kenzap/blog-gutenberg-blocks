@@ -1,21 +1,45 @@
-/**
- * BLOCK: kenzap-blog
- *
- * Registering a basic block with Gutenberg.
- * Simple block, renders and saves the same content without any interactivity.
- */
-
-//  Import CSS.
 import './style.scss';
 import './editor.scss';
 import Edit from './edit';
 import { blockProps, ContainerSave } from '../commonComponents/container/container';
 
-const { __ } = wp.i18n; // Import __() from wp.i18n
-const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
+const { __ } = wp.i18n;
+const { registerBlockType } = wp.blocks; 
 
 /**
- * Register: aa Gutenberg Block.
+ * Define typography defaults
+ */
+export const typographyArr = JSON.stringify([
+    {
+        'title': __( '- Title', 'kenzap-cta' ),
+        //'type': 'title',
+        'font-size': 26,
+        'font-weight': 4,
+        'line-height': 34,
+        'margin-bottom': 0,
+        'color': '#333333',
+    },
+    {
+        'title': __( '- Meta', 'kenzap-cta' ),
+        'font-size': 10,
+        'font-weight': 5,
+        'line-height': 18,
+        'margin-bottom': 0,
+        'color': '#333333'
+    },
+    {
+        'title': __( '- Author', 'kenzap-cta' ),
+        'font-size': 10,
+        'font-weight': 5,
+        'line-height': 20,
+        'text-transform': 'A',
+        'margin-bottom': 0,
+        'color': '#333333'
+    },
+]);
+
+/**
+ * Register: Gutenberg Block.
  *
  * Registers a new block provided a unique name and an object defining its
  * behavior. Once registered, the block is made editor as an option to any
@@ -37,6 +61,9 @@ registerBlockType( 'kenzap/blog-03', {
 		__( 'Posts', 'kenzap-blog' ),
 		__( 'News', 'kenzap-blog' ),
 	],
+	supports: {
+        align: [ 'full', 'wide' ],
+    },
 	attributes: {
 		...blockProps,
 
@@ -90,10 +117,6 @@ registerBlockType( 'kenzap/blog-03', {
 			type: 'string',
 			default: '#ff6600'
 		},
-		textColor: {
-			type: 'string',
-			default: '#333'
-		},
 		orderby: {
 			type: 'orderby',
 			default: 'date/desc'
@@ -102,7 +125,23 @@ registerBlockType( 'kenzap/blog-03', {
 			type: 'boolean',
 			default: false
 		}, 
-
+        typography: {
+            type: 'array',
+            default: [],
+		},
+		t0: {
+			type: 'string',
+		},
+		t1: {
+			type: 'string',
+		},
+		t2: {
+			type: 'string',
+		},
+		isFirstLoad: {
+			type: 'boolean',
+			default: true,
+		},
 	},
 	/**
 	 * The edit function describes the structure of your block in the context of the editor.
@@ -114,6 +153,16 @@ registerBlockType( 'kenzap/blog-03', {
 	 */
 	edit: function( props ) {
 
+		if ( props.attributes.isFirstLoad ) {
+
+			props.setAttributes( { isFirstLoad: false, } );
+
+            // refresh masonry
+            setTimeout(function(){ if (typeof kenzapB3 === 'function') { kenzapB3($); } ;},3000);
+		}
+
+		setTimeout(function(){ if (typeof kenzapB3 === 'function') { kenzapB3($); } ;},2000);
+		
 		return ( <Edit { ...props } /> );
 
 	},

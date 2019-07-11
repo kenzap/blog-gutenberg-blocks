@@ -16,7 +16,7 @@ if($attributes['ignoreNoImage']){ $args['meta_key'] = '_thumbnail_id'; }
 if($attributes['ignoreSticky']){ $args['ignore_sticky_posts'] = 1; }
 
 // block is previed in wp editor
-if($attributes['serverSide']){ $kenzapSize="kenzap-sm"; }
+//if($attributes['serverSide']){ $kenzapSize="kenzap-sm"; }
 
 //product order sorting
 switch ( $attributes['orderby'] ) {
@@ -41,17 +41,17 @@ $recentPosts = new WP_Query( $args );
 
 //define blog style
 $columnsClass = "kenzap-col-3";
-$columnsImage = "kenzap-blog-large";
+$columnsImage = "kp_banner";
 switch ( $attributes['columns'] ) {
-	case '1': $columnsClass = 'kenzap-col-12'; $columnsImage = "kenzap-blog-large"; break;
-	case '2': $columnsClass = 'kenzap-col-6'; $columnsImage = "kenzap-blog-large"; break;
-	case '3': $columnsClass = 'kenzap-col-4'; $columnsImage = "kenzap-blog-medium"; break;
-	case '4': $columnsClass = 'kenzap-col-3'; $columnsImage = "kenzap-blog-medium"; break;
+	case '1': $columnsClass = 'kenzap-col-12'; $columnsImage = "kp_banner"; break;
+	case '2': $columnsClass = 'kenzap-col-6'; $columnsImage = "kp_banner"; break;
+	case '3': $columnsClass = 'kenzap-col-4'; $columnsImage = "kp_l"; break;
+	case '4': $columnsClass = 'kenzap-col-3'; $columnsImage = "kp_l"; break;
 }
 
 if ( $recentPosts->have_posts() ) : ?>
 
-	<div class="kenzap-blog-2 <?php echo esc_attr($attributes['displayType'])." "; if($attributes['autoPadding']){ echo ' autoPadding '; } if(isset($attributes['className'])) echo esc_attr($attributes['className'])." "; ?>" style="--mc:<?php echo esc_attr($attributes['mainColor']); ?>;--tc:<?php echo esc_attr($attributes['textColor']); ?>; <?php echo ($kenzapStyles);//escaped in src/commonComponents/container/container-cont.php ?>">
+	<div class="kenzap-blog-2 <?php if($attributes['align']) echo "align".$attributes['align']." "; echo esc_attr($attributes['displayType'])." "; if($attributes['autoPadding']){ echo ' autoPadding '; } if(isset($attributes['className'])) echo esc_attr($attributes['className'])." "; ?>" style="--mc:<?php echo esc_attr($attributes['mainColor']); ?>;--tc:<?php echo esc_attr($attributes['textColor']); ?>; <?php echo ($kenzapStyles);//escaped in src/commonComponents/container/container-cont.php ?>">
 
 		<div class="kenzap-container <?php echo esc_attr($kenzapSize); ?>" style="max-width:<?php echo esc_attr($attributes['containerMaxWidth']);?>px;">
 			<div class="kenzap-row">
@@ -73,7 +73,7 @@ if ( $recentPosts->have_posts() ) : ?>
 							<?php endif; ?>	
 
 							<div class="blog-info">
-								<ul class="blog-meta <?php if(!$attributes['showDate'] && !$attributes['showCategory'] && !$attributes['showComments'] && !$attributes['showTags']) echo 'hidden'; ?>">
+								<ul style="<?php echo esc_attr($attributes['t1']); ?>" class="blog-meta <?php if(!$attributes['showDate'] && !$attributes['showCategory'] && !$attributes['showComments'] && !$attributes['showTags']) echo 'hidden'; ?>">
 									<?php if($attributes['showDate']){ ?>
 										<li>
 											<a <?php if($attributes['serverSide']){ echo 'target="_blank"'; } ?> href="javascript:;"><?php echo get_the_date(); ?></a>
@@ -82,29 +82,29 @@ if ( $recentPosts->have_posts() ) : ?>
 									<?php if($attributes['showCategory']){ 
 										$category = get_the_category(); if(isset($category[0])){ ?>
 											<li>
-												<a <?php if($attributes['serverSide']){ echo 'target="_blank"'; } ?> href="<?php echo get_category_link($category[0]->term_id); ?>"><?php echo esc_html($category[0]->cat_name); ?></a>
+												<a style="<?php echo esc_attr($attributes['t1']); ?>" <?php if($attributes['serverSide']){ echo 'target="_blank"'; } ?>  href="<?php echo get_category_link($category[0]->term_id); ?>"><?php echo esc_html($category[0]->cat_name); ?></a>
 											</li>
 										<?php }
 									} ?>
 									<?php if($attributes['showComments']){ 
 										$category = get_the_category(); if(isset($category[0])){ ?>
 											<li>
-												<a href="javascript:;" ><?php echo comments_number( esc_html__( 'no comments', 'kenzap-blog' ), esc_html__( 'one comment', 'kenzap-blog' ), '% ' . esc_html__( 'comments', 'kenzap-blog' ) ); ?></a>
+												<a style="<?php echo esc_attr($attributes['t1']); ?>" href="javascript:;" ><?php echo comments_number( esc_html__( 'no comments', 'kenzap-blog' ), esc_html__( 'one comment', 'kenzap-blog' ), '% ' . esc_html__( 'comments', 'kenzap-blog' ) ); ?></a>
 											</li>
 										<?php }
 									} ?>
 									<?php if($attributes['showTags']){ 
 										$tag = get_the_tags(); if(isset($tag[0])){ ?>
 											<li>
-												<a <?php if($attributes['serverSide']){ echo 'target="_blank"'; } ?> href="<?php echo get_category_link($tag[0]->term_id); ?>"><?php echo esc_html($tag[0]->name); ?></a>
+												<a style="<?php echo esc_attr($attributes['t1']); ?>" <?php if($attributes['serverSide']){ echo 'target="_blank"'; } ?> href="<?php echo get_category_link($tag[0]->term_id); ?>"><?php echo esc_html($tag[0]->name); ?></a>
 											</li>
 										<?php }
 									} ?>
 								</ul>
-								<h3 class="blog-title">
-									<a <?php if($attributes['serverSide']){ echo 'target="_blank"'; } ?> href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a>
+								<h3 class="blog-title" style="<?php echo esc_attr($attributes['t0']); ?>">
+									<a <?php if($attributes['serverSide']){ echo 'target="_blank"'; } ?> style="<?php echo esc_attr($attributes['t0']); ?>" href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a>
 								</h3>
-								<div class="blog-author">
+								<div class="blog-author" style="<?php echo esc_attr($attributes['t2']); ?>">
 									<?php echo esc_html__('by', 'kenzap-blog')." "; the_author_posts_link(); ?>  
 								</div>
 							</div>
@@ -123,7 +123,7 @@ if ( $recentPosts->have_posts() ) : ?>
 		</div>
 
 	</div>
-<?php else: ?>
+<?php wp_reset_postdata(); else: ?>
 
 	<?php echo esc_html__('no posts to display', 'kenzap-blog'); ?>			
 

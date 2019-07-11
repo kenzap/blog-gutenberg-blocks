@@ -5,6 +5,10 @@ function kenzap_blog_listing_03() {
 	require KENZAP_BLOG.'/src/commonComponents/container/container-var.php';
 
 	$attributes = array(
+		'align' => array(
+			'type'    => 'string',
+			'default' => '',
+		),
 		'serverSide'    => array(
 			'type'    => 'boolean',
 			'default' => false,
@@ -49,10 +53,6 @@ function kenzap_blog_listing_03() {
 			'type'    => 'number',
 			'default' => 5,
 		),
-		'textColor' => array(
-			'type' => 'string',	
-			'default' => '#333'
-		),
 		'orderby' => array(
 			'type' => 'string',	
 			'default' => 'date/desc'
@@ -65,7 +65,15 @@ function kenzap_blog_listing_03() {
 			'type' => 'string',	
 			'default' => '#ff6600'
 		),
-
+		't0' => array(
+			'type' => 'string',	
+		),
+		't1' => array(
+			'type' => 'string',	
+		),
+		't2' => array(
+			'type' => 'string',	
+		),
 	);
 
 	// Register block PHP

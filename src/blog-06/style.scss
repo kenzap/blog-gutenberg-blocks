@@ -1,10 +1,3 @@
-/*--------------------------------------------------------------
-    Search Page
---------------------------------------------------------------*/
-.kenzap .kenzap-blog-3 button,
-.kenzap .kenzap-blog-3 input[type="button"], 
-.kenzap .kenzap-blog-3 input[type="reset"], 
-.kenzap .kenzap-blog-3 input[type="submit"],
 .kenzap .kenzap-blog-3 img,
 .kenzap .kenzap-blog-3 h3,
 .kenzap .kenzap-blog-3 h4,
@@ -35,24 +28,26 @@
 
 .kenzap .kenzap-blog-3 .kenzap-container{
 	max-width:1170px;
-	padding:0 15px;
+	padding:0 var(--paddings2, 0);
 	margin:0 auto;
 	display: block;
 	box-sizing: border-box;
-}
-
-.kenzap .kenzap-blog-3{
-	padding: var(--paddingspx, 0px) 0;
+	overflow-x: hidden;
+	overflow-y: hidden;
 }
 
 .kenzap .kenzap-blog-3.autoPadding {
-	padding: calc(30px + (var(--paddings) - 30) * ((100vw - 300px) / (1600 - 300))) 0;
+	padding: calc(30px + (var(--paddings) - 30) * ((100vw - 300px) / (1600 - 300))) 0!important;;
 }
 
 .kenzap .kenzap-blog-3 .kenzap-col-4{
 	width:33.33333%;
 	float:left;
 	padding:0 15px;
+}
+
+.kenzap .kenzap-blog-3 .kenzap-lg .kenzap-row{
+	margin:0 -15px;
 }
 
 .kenzap .kenzap-blog-3 .kenzap-lg .kenzap-row,
@@ -134,17 +129,17 @@
 	width: 52px;
 	height: 67px;
 	padding: 10px 0;
-	background: var(--tc, #333);
-	color:#fff;
+	background: var(--mc, #333);
+	color:var(--tc, #fff);
 	font-size:14px;
 	line-height:26px;
 	font-weight:400;
-	text-transform:uppercase;
 	text-decoration:none;
 	text-align:center
 }
 
 .kenzap .kenzap-blog-3 .blog-item .blog-img .blog-meta a span{
+	color:var(--tc, #fff);
 	display:block;
 	font-size: 32px;
 	font-weight: 700;
@@ -166,10 +161,6 @@
 }
 
 .kenzap .kenzap-blog-3 .blog-item .blog-title a{
-	color:var(--tc, #333);
-	line-height:23px;
-	font-weight:400;
-	text-transform:uppercase;
 	text-decoration:none;
 }
 
@@ -179,7 +170,6 @@
 	line-height:26px;
 	font-weight:500;
 	text-decoration:none;
-	text-transform:uppercase;
 }
 
 .kenzap .kenzap-blog-3 .blog-item .read-more span{
@@ -188,6 +178,12 @@
 	font-size:20px;
 	margin:0 0 0 5px;
 	transition:all .5s
+}
+
+.kenzap .kenzap-blog-3 .kp-blog-pagination ul > li > a > span,
+.kenzap .kenzap-blog-3 .kp-blog-pagination ul > li > span,
+.kenzap .kenzap-blog-3 .kp-blog-pagination ul > li > a{
+	color:var(--pcl,#333);
 }
 
 .kenzap .kenzap-blog-3 .blog-item .read-more:hover span{
@@ -210,8 +206,7 @@
 	
 	.kenzap .kenzap-blog-3 .kenzap-col-4{
 		width:50%;
-	}
-	
+	}	
 }
 
 @media screen and (max-width: 30em) {
