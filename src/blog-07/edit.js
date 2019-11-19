@@ -93,9 +93,22 @@ export default class Edit extends Component {
                         />
 
                         <TextControl
+                            label={ __( 'Restrict by post type', 'kenzap-blog' ) }
+                            value={ attributes.postType }
+                            onChange={ ( postType ) => { setAttributes( { postType } ); } }
+                            help={ __( 'By default search is global but you can restrict it to certain post type only. Example: page, post..', 'kenzap-blog' ) }
+                        />
+
+                        <TextControl
                             label={ __( 'Search text', 'kenzap-blog' ) }
                             value={ attributes.searchText }
-                            onChange={ ( searchText ) => {  setAttributes( { searchText } ); } }
+                            onChange={ ( searchText ) => { setAttributes( { searchText } ); } }
+                        />
+
+                        <TextControl
+                            label={ __( 'Result text', 'kenzap-blog' ) }
+                            value={ attributes.searchText2 }
+                            onChange={ ( searchText2 ) => { setAttributes( { searchText2 } ); } }
                         />
 
                         <CheckboxControl
@@ -173,10 +186,12 @@ export default class Edit extends Component {
                         showCategory: attributes.showCategory,
                         showComments: attributes.showComments,
                         showTags: attributes.showTags,
+                        postType: attributes.postType,
                         showDate: attributes.showDate,
                         showExcerpt: attributes.showExcerpt,
                         pagination: attributes.pagination,  
                         searchText: attributes.searchText,  
+                        searchText2: attributes.searchText2,  
                         className: this.props.className,
                         t0: attributes.t0,
                         t1: attributes.t1,

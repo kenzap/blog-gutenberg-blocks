@@ -129,6 +129,9 @@ if ( ! function_exists( 'kenzap_blog_01_pagination' ) ) :
 
 	function kenzap_blog_01_pagination($class, $recentPosts, $pagenum_link){
 	
+		$pagenum_link = get_pagenum_link(999999999);
+		if ( is_front_page()) { $pagenum_link = get_home_url()."/".get_post_field( 'post_name', get_post() )."/page/999999999/"; }
+
 		echo '<div class="'.esc_attr( $class ).'">';
 		$big = 999999999; // need an unlikely integer
 		$pagination = paginate_links( array(

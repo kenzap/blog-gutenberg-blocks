@@ -70,6 +70,10 @@ export const attrs = {
 			type: 'boolean',
 			default: true
         },
+        postType: {
+			type: 'string',
+			default: ''
+		},
         showExcerpt: {
 			type: 'boolean',
 			default: true
@@ -101,6 +105,10 @@ export const attrs = {
 		searchText: {
 			type: 'string',
 			default: 'type to search',
+		},
+		searchText2: {
+			type: 'string',
+			default: 'Search Results for:',
 		},
 		t0: {
 			type: 'string',

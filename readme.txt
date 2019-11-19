@@ -68,4 +68,6 @@ New: Wordpress global search result page
 
 = v1.1.0 =
 New: more control over typography
+New: Kenzap search results - restrict search to custom post types
 Update: live preview background settings improved
+Update: blog search results text setting added 

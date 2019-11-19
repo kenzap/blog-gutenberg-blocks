@@ -24,22 +24,22 @@ require_once KENZAP_BLOG.'/src/commonComponents/container/container-cont.php'; ?
 			<header style="<?php echo esc_attr($attributes['t3']); ?>" class="page-header">
 				<div style="<?php echo esc_attr($attributes['t3']); ?>" class="page-title text-light" style="text-align:<?php echo esc_attr($attributes['txAlign']);?>">
 					<form>
-						<?php printf( esc_html__( 'Search Results for: %s', 'kenzap-blog' ), '<span>' . $q . '</span>' ); ?>
+						<?php if($attributes['searchText2']) printf( esc_html__( $attributes['searchText2'].' %s', 'kenzap-blog' ), '<span>' . $q . '</span>' ); ?>
 						<input id="kp-search-field" name="q" type="text" value="<?php echo esc_attr($q); ?>" placeholder="<?php echo esc_attr($attributes['searchText']); ?>">
 					</form>	
 				</div>
 			</header>
 
 			<?php
-			$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'page' ) : 1;
-			//print_r($_GET['page']);
+			$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 			$args = array(
-						'post_status'     => 'publish',
-						's'       		  => $q,
-						'posts_per_page'  => $attributes['per_page'],
-						'max_num_pages'  => $attributes['per_page'],
-						'suppress_filters'  => true,
-						'paged'           => $paged
+						'post_status'      => 'publish',
+						'post_type'        => $attributes['postType'],
+						's'       		   => $q,
+						'posts_per_page'   => $attributes['per_page'],
+						'max_num_pages'    => $attributes['per_page'],
+						'suppress_filters' => true,
+						'paged'            => $paged
 						);
 			
 			$query = new WP_Query( $args );
@@ -82,7 +82,7 @@ require_once KENZAP_BLOG.'/src/commonComponents/container/container-cont.php'; ?
 
 			<?php wp_reset_postdata(); else : ?>
 				 
-				<?php $attributes['notext'] = "Nothing found"; echo esc_html($attributes['notext']); ?>
+				<?php $attributes['notext'] = __("Nothing found","kenzap-blog"); echo esc_html($attributes['notext']); ?>
 				
 			<?php endif; ?>
         </div>

@@ -86,6 +86,10 @@ function kenzap_blog_07() {
 			'type'    => 'boolean',
 			'default' => true,
 		),
+		'postType'    => array(
+			'type'    => 'string',
+			'default' => '',
+		),
 		'showExcerpt'    => array(
 			'type'    => 'boolean',
 			'default' => true,
@@ -98,6 +102,10 @@ function kenzap_blog_07() {
 		'searchText' => array(
 			'type' => 'string',	
 			'default' => 'Type to search'
+		),
+		'searchText2' => array(
+			'type' => 'string',	
+			'default' => 'Search Results for:'
 		),
 		'className' => array(
 			'type' => 'string',	
